@@ -36,7 +36,7 @@ fun Application.module() {
 //    }
 
     //
-    // DatabaseFactory.init()
+    DatabaseFactory.init()
 
     routing {
 

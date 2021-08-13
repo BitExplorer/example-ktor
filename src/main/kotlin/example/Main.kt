@@ -3,6 +3,7 @@
 package example
 
 
+import example.config.DatabaseFactory
 import example.config.cors
 import io.ktor.application.*
 import io.ktor.features.*
@@ -13,6 +14,7 @@ import org.slf4j.event.Level
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
 fun Application.module() {
+
 
     install(DefaultHeaders)
     install(CORS) {
@@ -33,7 +35,8 @@ fun Application.module() {
 //        }
 //    }
 
-    //DatabaseFactory.init()
+    //
+    // DatabaseFactory.init()
 
     routing {
 

@@ -1,3 +1,5 @@
+import nu.studer.gradle.jooq.JooqEdition
+
 buildscript {
     ext.kotlin_version = '1.5.20'
     ext.ktor_version = '1.0.0'
@@ -17,7 +19,8 @@ plugins {
     id 'idea'
     id 'application'
     id "org.jetbrains.kotlin.jvm" version "1.5.21"
-    // id "com.github.ben-manes.versions" version "${gradleVersionsPlugin}"
+    id "com.github.ben-manes.versions" version "${gradleVersionsPlugin}"
+    id 'nu.studer.jooq' version '6.0'
 }
 
 mainClassName = 'example.MainKt'
@@ -31,8 +34,53 @@ repositories {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.21")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.4")
     implementation "io.ktor:ktor-server-netty:1.6.2"
     implementation "io.ktor:ktor-html-builder:1.6.2"
     implementation "ch.qos.logback:logback-classic:1.2.5"
-    testImplementation group: 'junit', name: 'junit', version: '4.12'
+
+    // JOOQ
+    implementation("org.jooq:jooq:${jooqVersion}")
+
+    //postgreSQL
+    runtimeOnly("org.postgresql:postgresql:${postgresqlVersion}")
+    jooqGenerator "org.postgresql:postgresql:${postgresqlVersion}"
+}
+
+jooq {
+    version = "${jooqVersion}"
+    edition = JooqEdition.OSS
+    configurations {
+        main {
+            generateSchemaSourceOnCompilation = true
+
+               generationTool {
+                   jdbc {
+                       driver = 'org.postgresql.Driver'
+                       url = 'jdbc:postgresql://localhost:5432/finance_test_db'
+                       user = 'henninb'
+                       password = 'monday1'
+                   }
+
+                   generator {
+                       name = 'org.jooq.codegen.DefaultGenerator'
+                       database {
+                            name = 'org.jooq.meta.postgres.PostgresDatabase'
+                            inputSchema = 'func'
+                            includes = 't_category'
+                            excludes = ''
+                       }
+                       generate {
+                           deprecated = false
+                           records = true
+                           immutablePojos = true
+                           fluentSetters = true
+                       }
+
+                       strategy.name = 'org.jooq.codegen.DefaultGeneratorStrategy'
+                   }
+              }
+        }
+
+    }
 }

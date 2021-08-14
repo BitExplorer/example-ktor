@@ -5,6 +5,7 @@ package example
 
 import example.config.DatabaseFactory
 import example.config.cors
+import example.routes.categoryRoute
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.response.*
@@ -38,11 +39,16 @@ fun Application.module() {
     //
     DatabaseFactory.init()
 
+    install(Routing) {
+        categoryRoute()
+    }
+
     routing {
 
         get("/") {
             call.respondText("Hello, world!")
         }
+
 
         /*install(StatusPages) {
             statusPages()

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.ObjectMapper
+import org.jetbrains.exposed.dao.id.EntityID
+import org.jetbrains.exposed.sql.Table
 import java.sql.Timestamp
 import java.util.*
 

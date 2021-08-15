@@ -2,8 +2,7 @@ package example
 
 import example.config.DatabaseFactory
 import example.config.cors
-import example.routes.categoryRoute
-import example.routes.descriptionRoute
+import example.routes.*
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.response.*
@@ -29,6 +28,9 @@ fun Application.module() {
     install(Routing) {
         categoryRoute()
         descriptionRoute()
+        accountRoute()
+        paymentRoute()
+        transactionRoute()
     }
 
     routing {

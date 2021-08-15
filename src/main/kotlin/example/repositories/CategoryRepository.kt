@@ -12,29 +12,22 @@ import org.jooq.generated.tables.TCategory
 
 //class CategoryRepository(val databaseFactory: DatabaseFactory) {
 class CategoryRepository() {
-
-//    suspend fun getCategories(): List<Category> {
-//        return databaseFactory.doJooqQuery {
-//            it.selectFrom(TCategory).fetchInto(Category::class.java)
-//        }
-//    }
-
     suspend fun categories(): List<Category> {
         return doJooqQuery {
             it.selectFrom(T_CATEGORY).fetchInto(Category::class.java)
         }
     }
 
-    suspend fun getCategories(): List<Category> = dbQuery {
-        CategoryTable.selectAll().map { toCategory(it) }
-    }
-
-    private fun toCategory(row: ResultRow): Category =
-        Category(
-            categoryId = row[CategoryTable.categoryId],
-            category = row[CategoryTable.category],
-            activeStatus = row[CategoryTable.activeStatus]
-        )
+//    suspend fun getCategories(): List<Category> = dbQuery {
+//        CategoryTable.selectAll().map { toCategory(it) }
+//    }
+//
+//    private fun toCategory(row: ResultRow): Category =
+//        Category(
+//            categoryId = row[CategoryTable.categoryId],
+//            category = row[CategoryTable.category],
+//            activeStatus = row[CategoryTable.activeStatus]
+//        )
 
 }
 

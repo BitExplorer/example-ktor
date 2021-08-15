@@ -30,7 +30,7 @@ data class Transaction(
     var accountId: Long,
 
     @JsonProperty
-    var accountType: AccountType,
+    var accountType: AccountType?,
 
     @JsonProperty
     var accountNameOwner: String,
@@ -48,13 +48,13 @@ data class Transaction(
     var amount: BigDecimal,
 
     @JsonProperty
-    var transactionState: TransactionState,
+    var transactionState: TransactionState?,
 
     @JsonProperty
     var activeStatus: Boolean = true,
 
     @JsonProperty
-    var reoccurringType: ReoccurringType = ReoccurringType.Undefined,
+    var reoccurringType: ReoccurringType? = ReoccurringType.Undefined,
 
     @JsonProperty
     var notes: String = ""

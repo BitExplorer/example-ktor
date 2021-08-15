@@ -6,7 +6,6 @@ import io.ktor.response.*
 import io.ktor.routing.*
 import kotlin.text.get
 
-
 fun Route.categoryRoute() {
 
     val categoryRepository = CategoryRepository()

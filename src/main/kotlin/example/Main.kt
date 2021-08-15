@@ -1,11 +1,9 @@
-//@file:Suppress("DEPRECATION", "UNUSED")
-
 package example
-
 
 import example.config.DatabaseFactory
 import example.config.cors
 import example.routes.categoryRoute
+import example.routes.descriptionRoute
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.response.*
@@ -26,21 +24,11 @@ fun Application.module() {
         level = Level.INFO
     }
 
-//    install(Authentication) {
-//        jwt()
-//    }
-//
-//    install(ContentNegotiation) {
-//        jackson {
-//            enable(SerializationFeature.INDENT_OUTPUT)
-//        }
-//    }
-
-    //
     DatabaseFactory.init()
 
     install(Routing) {
         categoryRoute()
+        descriptionRoute()
     }
 
     routing {

@@ -64,7 +64,7 @@ jooq {
                generationTool {
                    jdbc {
                        driver = 'org.postgresql.Driver'
-                       url = 'jdbc:postgresql://localhost:5432/finance_test_db'
+                       url = 'jdbc:postgresql://localhost:5432/finance_db'
                        user = 'henninb'
                        password = 'monday1'
                    }
@@ -73,9 +73,9 @@ jooq {
                        name = 'org.jooq.codegen.DefaultGenerator'
                        database {
                             name = 'org.jooq.meta.postgres.PostgresDatabase'
-                            inputSchema = 'func'
-                            includes = 't_category'
-                            excludes = ''
+                            inputSchema = 'public'
+//                            includes = 't_category'
+//                            excludes = ''
                        }
                        generate {
                            deprecated = false

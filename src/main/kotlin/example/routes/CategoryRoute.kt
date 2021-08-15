@@ -13,6 +13,7 @@ fun Route.categoryRoute() {
     route("categories") {
         get {
             val categories = categoryRepository.categories()
+
             call.respondText(categories.toString())
         }
     }

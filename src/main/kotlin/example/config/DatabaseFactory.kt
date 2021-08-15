@@ -6,6 +6,9 @@ import com.zaxxer.hikari.HikariDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.jooq.DSLContext
+import org.jooq.SQLDialect
+import org.jooq.impl.DSL
 
 object DatabaseFactory {
 
@@ -15,7 +18,7 @@ object DatabaseFactory {
         config.jdbcUrl = "jdbc:postgresql://192.168.100.124:5432/finance_db"
         config.username = "henninb"
         config.password = "monday1"
-//        config.maximumPoolSize = 3
+        config.maximumPoolSize = 3
 //        config.isAutoCommit = false
 //        config.transactionIsolation = "TRANSACTION_REPEATABLE_READ"
 //        config.validate()
@@ -26,9 +29,12 @@ object DatabaseFactory {
         Database.connect(hikari())
     }
 
+    suspend fun <T> doJooqQuery(block: (DSLContext) -> T): T = withContext(Dispatchers.IO) {
+        transaction {block(DSL.using(hikari(), SQLDialect.POSTGRES))}
+    }
+
     suspend fun <T> dbQuery(
-        block: () -> T): T =
-        withContext(Dispatchers.IO) {
+        block: () -> T): T = withContext(Dispatchers.IO) {
             transaction { block() }
         }
 }

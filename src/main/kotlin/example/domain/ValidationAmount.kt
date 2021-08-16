@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.ObjectMapper
-import example.utils.Constants
-import example.utils.Constants.FIELD_MUST_BE_A_CURRENCY_MESSAGE
 import java.math.BigDecimal
 import java.sql.Timestamp
 import java.util.*
@@ -30,7 +28,7 @@ data class ValidationAmount(
     @JsonProperty
     var amount: BigDecimal
 ) {
-    constructor() : this(0L, 0L, Timestamp(0L), true, TransactionState.Undefined, BigDecimal(0.0))
+    constructor() : this(0L, 0L, Timestamp(0L), true, TransactionState.undefined, BigDecimal(0.0))
 
     @JsonIgnore
     var dateAdded: Timestamp = Timestamp(Calendar.getInstance().time.time)

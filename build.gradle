@@ -74,8 +74,23 @@ jooq {
                        database {
                             name = 'org.jooq.meta.postgres.PostgresDatabase'
                             inputSchema = 'public'
-//                            includes = 't_category'
-//                            excludes = ''
+                           forcedTypes {
+                               forcedType {
+                                   userType = 'example.domain.AccountType'
+                                   converter = 'example.utils.AccountTypeConverter'
+                                   includeExpression = '.*\\.account_type'
+                               }
+                               forcedType {
+                                   userType = 'example.domain.TransactionState'
+                                   converter = 'example.utils.TransactionStateConverter'
+                                   includeExpression = '.*\\.transaction_state'
+                               }
+                               forcedType {
+                                   userType = 'example.domain.ReoccurringType'
+                                   converter = 'example.utils.ReoccurringTypeConverter'
+                                   includeExpression = '.*\\.reoccurring_type'
+                               }
+                           }
                        }
                        generate {
                            deprecated = false
@@ -83,6 +98,7 @@ jooq {
                            immutablePojos = true
                            fluentSetters = true
                        }
+
 
                        strategy.name = 'org.jooq.codegen.DefaultGeneratorStrategy'
                    }

@@ -6,16 +6,16 @@ import com.fasterxml.jackson.annotation.JsonProperty
 @JsonFormat
 enum class TransactionState(val label: String) {
     @JsonProperty("cleared")
-    Cleared("cleared"),
+    cleared("cleared"),
 
     @JsonProperty("outstanding")
-    Outstanding("outstanding"),
+    outstanding("outstanding"),
 
     @JsonProperty("future")
-    Future("future"),
+    future("future"),
 
     @JsonProperty("undefined")
-    Undefined("undefined");
+    undefined("undefined");
 
     fun value(): String = label
     override fun toString(): String = name.lowercase()

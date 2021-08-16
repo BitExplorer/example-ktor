@@ -6,13 +6,13 @@ import com.fasterxml.jackson.annotation.JsonProperty
 @JsonFormat
 enum class AccountType(val label: String) {
     @JsonProperty("credit")
-    Credit("credit"),
+    credit("credit"),
 
     @JsonProperty("debit")
-    Debit("debit"),
+    debit("debit"),
 
     @JsonProperty("undefined")
-    Undefined("undefined");
+    undefined("undefined");
 
     override fun toString(): String = name.lowercase()
 

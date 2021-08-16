@@ -36,7 +36,7 @@ fun Application.module() {
     routing {
 
         get("/") {
-            call.respondText("Hello, world!")
+            call.respondText("main")
         }
 
 

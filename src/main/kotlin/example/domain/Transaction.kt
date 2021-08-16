@@ -2,16 +2,6 @@ package example.domain
 
 import com.fasterxml.jackson.annotation.*
 import com.fasterxml.jackson.databind.ObjectMapper
-import example.utils.*
-import example.utils.Constants.ALPHA_NUMERIC_NO_SPACE_PATTERN
-import example.utils.Constants.ALPHA_UNDERSCORE_PATTERN
-import example.utils.Constants.ASCII_PATTERN
-import example.utils.Constants.FIELD_MUST_BE_ALPHA_SEPARATED_BY_UNDERSCORE_MESSAGE
-import example.utils.Constants.FIELD_MUST_BE_ASCII_MESSAGE
-import example.utils.Constants.FIELD_MUST_BE_A_CURRENCY_MESSAGE
-import example.utils.Constants.FIELD_MUST_BE_NUMERIC_NO_SPACE_MESSAGE
-import example.utils.Constants.FIELD_MUST_BE_UUID_MESSAGE
-import example.utils.Constants.UUID_PATTERN
 import java.math.BigDecimal
 import java.sql.Date
 import java.sql.Timestamp
@@ -30,7 +20,7 @@ data class Transaction(
     var accountId: Long,
 
     @JsonProperty
-    var accountType: AccountType?,
+    var accountType: AccountType,
 
     @JsonProperty
     var accountNameOwner: String,
@@ -48,21 +38,21 @@ data class Transaction(
     var amount: BigDecimal,
 
     @JsonProperty
-    var transactionState: TransactionState?,
+    var transactionState: TransactionState,
 
     @JsonProperty
     var activeStatus: Boolean = true,
 
     @JsonProperty
-    var reoccurringType: ReoccurringType? = ReoccurringType.Undefined,
+    var reoccurringType: ReoccurringType? = ReoccurringType.undefined,
 
     @JsonProperty
     var notes: String = ""
 ) {
 
     constructor() : this(
-        0L, "", 0, AccountType.Undefined, "", Date(0),
-        "", "", BigDecimal(0.00), TransactionState.Undefined, true, ReoccurringType.Undefined, ""
+        0L, "", 0, AccountType.undefined, "", Date(0),
+        "", "", BigDecimal(0.00), TransactionState.undefined, true, ReoccurringType.undefined, ""
     )
 
     @JsonGetter("transactionDate")

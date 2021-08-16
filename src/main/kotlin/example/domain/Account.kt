@@ -39,7 +39,7 @@ data class Account(
 ) {
 
     constructor() : this(
-        0L, "", AccountType.Undefined, true,
+        0L, "", AccountType.undefined, true,
         "0000", BigDecimal(0.0), BigDecimal(0.0), BigDecimal(0.0), Timestamp(0)
     )
 

@@ -6,31 +6,28 @@ import com.fasterxml.jackson.annotation.JsonProperty
 @JsonFormat
 enum class ReoccurringType(val label: String) {
     @JsonProperty("monthly")
-    Monthly("monthly"),
+    monthly("monthly"),
 
     @JsonProperty("annually")
-    Annually("annually"),
+    annually("annually"),
 
     @JsonProperty("bi_annually")
-    BiAnnually("bi_annually"),
+    bi_annually("bi_annually"),
 
     @JsonProperty("fortnightly")
-    FortNightly("fortnightly"),
+    fortnightly("fortnightly"),
 
     @JsonProperty("quarterly")
-    Quarterly("quarterly"),
+    quarterly("quarterly"),
 
     @JsonProperty("onetime")
-    Onetime("onetime"),
+    onetime("onetime"),
 
     @JsonProperty("undefined")
-    Undefined("undefined");
+    undefined("undefined");
 
     fun value(): String = label
     override fun toString(): String = name.lowercase()
 
-    companion object {
-        //private val VALUES = values();
-        //fun getByValue(type: String) = VALUES.firstOrNull { it.type == type }
-    }
+
 }

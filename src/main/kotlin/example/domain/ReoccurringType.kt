@@ -11,8 +11,8 @@ enum class ReoccurringType(val label: String) {
     @JsonProperty("annually")
     annually("annually"),
 
-    @JsonProperty("bi_annually")
-    bi_annually("bi_annually"),
+    @JsonProperty("biannually")
+    biannually("biannually"),
 
     @JsonProperty("fortnightly")
     fortnightly("fortnightly"),

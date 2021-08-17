@@ -19,7 +19,7 @@ data class Description(
     var activeStatus: Boolean = true,
 
     @JsonProperty
-    var description: String
+    var descriptionName: String
 ) {
     constructor() : this(0L, true, "")
 

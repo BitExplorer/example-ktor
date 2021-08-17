@@ -17,7 +17,7 @@ data class Category(
     var activeStatus: Boolean = true,
 
     @JsonProperty
-    var category: String
+    var categoryName: String
 ) {
     constructor() : this(0L, true, "")
 

@@ -13,7 +13,7 @@ import org.jooq.generated.Tables
 class ParameterRepository {
     suspend fun parameters(): List<Parameter> {
         return DatabaseFactory.doJooqQuery {
-            it.selectFrom(Tables.T_PARM).fetchInto(Parameter::class.java)
+            it.selectFrom(Tables.T_PARAMETER).fetchInto(Parameter::class.java)
         }
     }
 }

@@ -9,6 +9,8 @@ import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.selectAll
 import org.jooq.generated.Tables.T_CATEGORY
 import org.jooq.generated.tables.TCategory
+import java.sql.Date
+import java.time.LocalDateTime
 
 //class CategoryRepository(val databaseFactory: DatabaseFactory) {
 class CategoryRepository() {
@@ -17,6 +19,17 @@ class CategoryRepository() {
             it.selectFrom(T_CATEGORY).fetchInto(Category::class.java)
         }
     }
+
+
+    suspend fun insertCategory(category: Category) {
+        return doJooqQuery {
+            //it.insertInto(T_CATEGORY).columns(T_CATEGORY.CATEGORY_NAME, T_CATEGORY.ACTIVE_STATUS, T_CATEGORY.DATE_ADDED, T_CATEGORY.DATE_UPDATED)
+            it.newRecord(T_CATEGORY).values(category.categoryId, category.categoryName, category.activeStatus, LocalDateTime.now(), LocalDateTime.now()).store()
+//.fields
+
+        }
+    }
+
 
 //    suspend fun getCategories(): List<Category> = dbQuery {
 //        CategoryTable.selectAll().map { toCategory(it) }

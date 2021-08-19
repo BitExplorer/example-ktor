@@ -20,27 +20,14 @@ class CategoryRepository() {
         }
     }
 
-
     suspend fun insertCategory(category: Category) {
         return doJooqQuery {
             it.insertInto(T_CATEGORY).columns(T_CATEGORY.CATEGORY_NAME, T_CATEGORY.ACTIVE_STATUS, T_CATEGORY.DATE_ADDED, T_CATEGORY.DATE_UPDATED)
-                .values("testing1234", false, LocalDateTime.now(), LocalDateTime.now()).returning(T_CATEGORY.CATEGORY_ID).fetchOne()
-            it.newRecord(T_CATEGORY, category).store()
-//.fields
+                .values(category.categoryName, category.activeStatus, LocalDateTime.now(), LocalDateTime.now()).returning(T_CATEGORY.CATEGORY_ID).fetchOne()
+            //it.newRecord(T_CATEGORY, category).store()
 
         }
     }
-
-
-//    DSL.using(configuration)
-//    .insertInto(TABLENAME, ...)
-//    .values(...)
-//    .returning(TABLENAME.ID)
-//    .fetchOne();
-
-//    dslContext.newRecord(TABLE, POJO);
-//    record.insert();
-//    POJO.setId(record.getId());
 
 //    suspend fun getCategories(): List<Category> = dbQuery {
 //        CategoryTable.selectAll().map { toCategory(it) }

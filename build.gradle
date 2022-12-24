@@ -1,7 +1,7 @@
 import nu.studer.gradle.jooq.JooqEdition
 
 buildscript {
-    ext.kotlin_version = '1.5.20'
+    ext.kotlin_version = '1.7.22'
     ext.ktor_version = '1.0.0'
 
     repositories {
@@ -18,14 +18,14 @@ plugins {
     id 'groovy'
     id 'idea'
     id 'application'
-    id "org.jetbrains.kotlin.jvm" version "1.5.21"
+    id "org.jetbrains.kotlin.jvm" version "1.7.22"
     id "com.github.ben-manes.versions" version "${gradleVersionsPlugin}"
     id 'nu.studer.jooq' version '6.0'
 }
 
 mainClassName = 'example.MainKt'
 
-sourceCompatibility = JavaVersion.VERSION_11
+sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
     mavenCentral()
@@ -64,7 +64,7 @@ jooq {
                generationTool {
                    jdbc {
                        driver = 'org.postgresql.Driver'
-                       url = 'jdbc:postgresql://192.168.100.124:5432/finance_db'
+                       url = 'jdbc:postgresql://192.168.10.25:5432/finance_db'
                        user = 'henninb'
                        password = 'monday1'
                    }

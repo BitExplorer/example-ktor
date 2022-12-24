@@ -15,7 +15,7 @@ object DatabaseFactory {
     private fun hikari(): HikariDataSource {
         val config = HikariConfig()
         //config.driverClassName = "org.postgresql.Driver"
-        config.jdbcUrl = "jdbc:postgresql://192.168.100.124:5432/finance_db"
+        config.jdbcUrl = "jdbc:postgresql://192.168.10.25:5432/finance_db"
         config.username = "henninb"
         config.password = "monday1"
         config.maximumPoolSize = 3

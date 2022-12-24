@@ -1,7 +1,6 @@
 package example.routes
 
 import example.repositories.AccountRepository
-import example.repositories.CategoryRepository
 import io.ktor.application.*
 import io.ktor.response.*
 import io.ktor.routing.*

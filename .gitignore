@@ -5,3 +5,6 @@
 /out
 /build
 *.jks
+*.crt
+*.key
+*.p12
